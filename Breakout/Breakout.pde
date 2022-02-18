@@ -123,7 +123,7 @@ void draw() {
        pitaPitanje = true;
        path_kraj = sketchPath(krajName);
        zvuk_path = new SoundFile(this, path_kraj);
-       zvuk_path.play(4.1);
+       zvuk_path.play();
     }   
   }
 
@@ -298,7 +298,8 @@ void azurirajObjekte() {
        {
          path_sudar = sketchPath(sudarName);
          zvuk_path = new SoundFile(this, path_sudar);
-         zvuk_path.play(1.25);
+         if(!zvuk_path.isPlaying())
+           zvuk_path.play(1.25);
          objekti[a].x -= cos(radians(objekti[a].smjer)) * objekti[a].brzina;
          objekti[a].y += sin(radians(objekti[a].smjer)) * objekti[a].brzina;
          lopta.kretanjeSudar(lopta.smjer);
