@@ -85,7 +85,7 @@ void setup() {
     brojCigli++;
   }
   //crvene cigle
-  for(int a = 26; a <= 600 - 32; a +=32)
+  for(int a = 26; a <= 600 -  32; a +=32)
   {
     GameObject brick2 = new GameObject(a,116, cigla2Img);
     brick2.solid = true;
@@ -150,6 +150,7 @@ void keyPressed() {
     }
     
     if(key == ' ')
+      if(lopta.brzina == 0)
          lopta.pomak(3, random(0,360));
 }
 
@@ -255,6 +256,7 @@ void nacrtajObjekte() {
 
 void endGame() {
   noLoop();  
+  exit();
 }
 
 int getIndex(GameObject test) {
@@ -319,11 +321,15 @@ void azurirajObjekte() {
            brojCigli--;
            if(brojCigli == 0)
              {
+               lopta.x = 300 - 8;
+               lopta.y = 250 - 8;
+               lopta.brzina = 0;
+               porukaPitanja = "Pobijedili ste! Igrati opet?";
+               pitaPitanje = true;
+               ispisiPitanje();
                path_pobjeda = sketchPath(pobjedaName);
                zvuk_path = new SoundFile(this, path_pobjeda);
                zvuk_path.play(1.1);
-               porukaPitanja = "Pobijedili ste! Igrati opet?";
-               ispisiPitanje();
              }          
          }
        }
@@ -434,14 +440,6 @@ class GameObject {
           {
             y -= 1;
             smjer = prilagodiSmjer(360 - smjer);
-            if(indexSudara == getIndex(ploca))
-            {
-              smjer = prilagodiSmjer(smjer + ((ploca.x - ploca.ikonaSirina/2) - (lopta.x + ploca.ikonaSirina/2))*1);
-              if(smjer > 179)
-                smjer =smjer% 179;
-             if(smjer < 1)
-               smjer =smjer %  1;
-            }
           }
           else{
             y -= 1;
@@ -481,7 +479,8 @@ class GameObject {
       {
         x -= normalx;
         y -=normaly;
-        a = 1000;
+        //a = 1000;
+        break;
       }
     }
   }
