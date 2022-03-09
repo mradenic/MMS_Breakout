@@ -10,7 +10,7 @@ int rezultat, zivoti, brojCigli;
 
 // glazba
 SoundFile file, zvuk_path;
-String audioName = "background.mp3";
+String audioName = "pozadinska.wav";
 String sudarName = "sudar.wav";
 String krajName = "kraj.wav";
 String pobjedaName = "pobjeda.wav";
@@ -97,9 +97,9 @@ void setup() {
   rezultat = 0;
   zivoti = 3;
   
-  path_backg = sketchPath(audioName);
-  file = new SoundFile(this, path_backg);
-  file.loop(1.1, 0.35);
+  //path_backg = sketchPath(audioName);
+ // file = new SoundFile(this, path_backg);
+ // file.loop(1, 0.25);
 }
 
 void draw() {
