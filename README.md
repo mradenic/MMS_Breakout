@@ -1,4 +1,4 @@
-# MMS_Breakout
+# MMS_Breakout - Processing
 Završni projekt (MMS)
 Potrebno uključiti processing.sound.*
 
